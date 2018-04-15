@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Weather!!{% endblock %}
+
+{% block body %}
+
+    {% if success == false %}
+        <p>Error: incorrect date</p>
+        {% if error == "interval" %}
+            <p>date specified is in wrong interval. It should be within next two months</p>
+        {% elseif error == "format" %}
+            <p>date specified is in wrong format. It should be formatted yyyy-mm-dd, e.g. 2018-05-30</p>
+        {% endif %}
+    {% else %}
+        <div class="example-wrapper">
+            <ul>
+                <li>{{ weather_data.date }}</li>
+                <li>{{ weather_data.nightTemp }}</li>
+                <li>{{ weather_data.dayTemp }}</li>
+                <li>{{ weather_data.sky }}</li>
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}
